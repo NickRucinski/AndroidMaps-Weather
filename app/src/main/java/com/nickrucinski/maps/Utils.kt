@@ -7,10 +7,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import java.io.BufferedReader
-import java.io.File
-import java.io.FileOutputStream
-import java.io.FileReader
-import java.io.IOException
 import java.io.InputStreamReader
 
 class Utils {
@@ -61,5 +57,12 @@ class Utils {
             e.printStackTrace()
             return ""
         }
+    }
+
+    fun createIconMap(): HashMap<String, Int>{
+        val iconMap = HashMap<String, Int>()
+        iconMap["cloudy"] = R.drawable.cloud_24px
+        iconMap["snow"] = R.drawable.weather_snowy_24px
+        return iconMap
     }
 }

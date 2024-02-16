@@ -12,6 +12,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        manifestPlaceholders += mapOf()
         applicationId = "com.nickrucinski.maps"
         minSdk = 34
         targetSdk = 34
@@ -60,6 +61,7 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.9"
@@ -81,11 +83,16 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.7.7")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
@@ -97,6 +104,9 @@ dependencies {
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("com.google.maps.android:maps-compose:4.3.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation("androidx.compose.material:material:1.6.1")
 
     // To use Kotlin Symbol Processing (KSP)
     ksp("androidx.room:room-compiler:2.6.1")
