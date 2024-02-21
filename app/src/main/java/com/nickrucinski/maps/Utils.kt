@@ -26,6 +26,7 @@ class Utils {
             urlString,
             response,
             Response.ErrorListener { error ->
+                Log.d("Error", error.toString())
                 Toast.makeText(context, "There was an error making the request", Toast.LENGTH_LONG)
                     .show()
             }) {

@@ -1,6 +1,7 @@
 package com.nickrucinski.maps.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,7 +17,7 @@ fun NavigationGraph(navController: NavHostController) {
             CustomMapView()
         }
         composable(BottomNavItem.Settings.screen_route) {
-            WeatherScreen()
+            SettingsScreen(LocalContext.current)
         }
 
     }
