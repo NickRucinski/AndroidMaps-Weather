@@ -10,9 +10,18 @@ data class WeatherData (
     var minutely: Minutely,
     var hourly: Hourly,
     var daily: Daily,
-    var alerts: Array<String>,
+    var alerts: Array<Alert>,
     var flags: Flags
 ) {
+    data class Alert(
+        var title: String,
+        var regions: Array<String>,
+        var severity: String,
+        var time: Double,
+        var expires: Double,
+        var description: String,
+        var uri: String
+    )
     data class Currently(
         var time: Double,
         var summary: String,

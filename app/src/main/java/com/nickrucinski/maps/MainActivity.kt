@@ -8,9 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.nickrucinski.maps.components.BottomNav
 import com.nickrucinski.maps.components.NavigationGraph
@@ -39,40 +37,8 @@ class MainActivity : ComponentActivity() {
 
                         NavigationGraph(navController = navController)
                     }
-
-
                 }
             }
         }
     }
 } // End of Main Activity
-
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Preview(showBackground = true)
-@Composable
-fun preview(){
-    val iconMap = HashMap<String, Int>()
-    iconMap["cloudy"] = R.drawable.cloud_24px
-    iconMap["snow"] = R.drawable.weather_snowy_24px
-//    val weatherData = ArrayList<WeatherData>()
-//    weatherData.add(WeatherData("21.3", "cloudy"))
-//    weatherData.add(WeatherData("22.3", "cloudy"))
-//    weatherData.add(WeatherData("23.3", "cloudy"))
-    MapsTheme {
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            val navController = rememberNavController()
-            Scaffold(
-                bottomBar = { BottomNav(navController = navController) }
-            ) {_ ->
-
-                NavigationGraph(navController = navController)
-            }
-
-
-        }
-
-    }
-}

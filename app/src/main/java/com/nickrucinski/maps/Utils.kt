@@ -4,10 +4,14 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
+
+val WEATHER_URL = "https://api.pirateweather.net/forecast/${BuildConfig.WEATHER_API_KEY}/"
 
 class Utils {
     /*
@@ -35,7 +39,26 @@ class Utils {
             }
         }
         queue.add(stringRequest)
+    }
 
+    public fun getDataFromWeatherAPI(
+        urlString: String,
+        context: Context,
+        response: Response.Listener<JSONObject>
+    ) {
+        var queue = Volley.newRequestQueue(context)
+        var jsonRequest = object : JsonObjectRequest(
+            urlString,
+            response,
+            Response.ErrorListener { error ->
+                Log.d("Error", error.toString())
+                Toast.makeText(context, "There was an error making the request", Toast.LENGTH_LONG)
+                    .show()
+            }
+        ) {
+
+        }
+        queue.add(jsonRequest)
     }
 
     fun ReadJSONFromAssets(context: Context, path: String): String {

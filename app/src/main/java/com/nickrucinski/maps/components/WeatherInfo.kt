@@ -1,5 +1,6 @@
 package com.nickrucinski.maps.components
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,17 +31,29 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import com.nickrucinski.maps.R
 import com.nickrucinski.maps.Utils
+import com.nickrucinski.maps.WEATHER_URL
 import com.nickrucinski.maps.WeatherData
 
 
 @Composable
 fun WeatherScreen(){
     val iconMap = Utils().createIconMap()
-    val json = Utils().ReadJSONFromAssets(LocalContext.current, "response.json")
-    val weatherData = Gson().fromJson(json, WeatherData::class.java)
+    val userLocation = LatLng(40.28640022545426,-75.26387422816678)
+    val tempJSON = Utils().ReadJSONFromAssets(LocalContext.current, "response.json")
+    var weatherData: WeatherData = Gson().fromJson(tempJSON, WeatherData::class.java)
+    Utils().getDataFromWeatherAPI(
+        "$WEATHER_URL${userLocation.latitude},${userLocation.longitude}",
+        LocalContext.current,
+        )
+        {
+            Log.d("api", it.toString())
+            weatherData = Gson().fromJson(it.toString(), WeatherData::class.java)
+        }
+
     Column {
         CurrentWeatherDisplay()
         WeatherBar(weatherData = weatherData, iconMap = iconMap)
