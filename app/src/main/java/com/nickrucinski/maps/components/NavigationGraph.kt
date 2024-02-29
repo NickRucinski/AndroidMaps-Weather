@@ -17,7 +17,7 @@ fun NavigationGraph(navController: NavHostController) {
             CustomMapView()
         }
         composable(BottomNavItem.Settings.screen_route) {
-            SettingsScreen(LocalContext.current)
+            CreateAccountScreen(LocalContext.current)
         }
 
     }

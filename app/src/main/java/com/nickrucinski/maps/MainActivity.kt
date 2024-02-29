@@ -10,6 +10,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import com.nickrucinski.maps.components.BottomNav
 import com.nickrucinski.maps.components.NavigationGraph
 import com.nickrucinski.maps.ui.theme.MapsTheme
